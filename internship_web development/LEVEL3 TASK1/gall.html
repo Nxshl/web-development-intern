@@ -1,0 +1,193 @@
+<html>
+<head>
+  <title>Art Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      background-color:lightcoral;
+    }
+
+    .head{
+        background-color: coral;
+      color: white;
+      padding: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 20px;
+    }
+    h1 {
+      text-align: center;
+      padding: 50px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .thumbnail {
+      margin: 5px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      width: 200px;
+      height: auto;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.1);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 80%;
+      margin: auto;
+    }
+
+    .mySlides img {
+      width: 100%;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev {
+      left: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+
+
+    
+  </style>
+</head>
+<body>
+
+<div class ="head">
+<h1>Art Gallery</h1>
+</div>
+
+<div class="gallery">
+  <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape1.jpeg" alt="Thumbnail 1" onclick="openModal();currentSlide(1)" class="thumbnail">
+  <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape2.jpeg" alt="Thumbnail 2" onclick="openModal();currentSlide(2)" class="thumbnail">
+  <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape3.webp" alt="Thumbnail 3" onclick="openModal();currentSlide(3)" class="thumbnail">
+  <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape4.png" alt="Thumbnail 4" onclick="openModal();currentSlide(4)" class="thumbnail">
+  <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape5.webp" alt="Thumbnail 5" onclick="openModal();currentSlide(5)" class="thumbnail">
+  <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/background6.png" alt="Thumbnail 6" onclick="openModal();currentSlide(6)" class="thumbnail">
+</div>
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <div class="mySlides">
+      <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape1.jpeg" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape2.jpeg" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape3.webp" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape4.png" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape5.webp" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <img src="/Users/nxshl/Documents/code/internship_web development/l2t1/landscape6.jpeg" style="width:100%">
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+</div>
+
+<script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function openModal() {
+    document.getElementById("myModal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "block";
+  }
+</script>
+
+</body>
+</html>

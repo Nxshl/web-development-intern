@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body{
+      background-color: burlywood;
+    }
+
+    div{
+      background-color:beige;
+    }
+    .navbar {
+      background-color: rgb(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 20px;
+    }
+
+    .navbar h1 {
+      margin: 0;
+    }
+
+    .calculator-icon {
+      width: 30px;
+      height: 30px;
+      background-color: lightgreen;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .calculator-icon img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .btn {
+      padding: 20px 20px;
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: background-color 0.7s ease;
+      position: relative;
+      left: 44%;
+      top: 28px;
+    }
+
+    .btn:hover {
+      background-color: red;
+    }
+
+    .calculator {
+      border: 1px solid #ccc;
+      padding: 100px;
+      margin-top: 20px;
+      width: 300px;
+      position: absolute;
+      left: 33%;
+      bottom: 30%;
+      border-radius: 20px;
+    }
+
+    .calculator input[type="number"] {
+      width: calc(100% - 10px);
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    .calculator button {
+      padding: 10px 20px;
+      background-color: lightgreen;
+      border: none;
+      cursor: pointer;
+    }
+
+    .calculator button:hover {
+      background-color: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <h1>Calculator</h1>
+  <div class="calculator-icon">
+    <img src="/Users/nxshl/Documents/code/internship_web development/l1t2/calcicon.png" alt="Calculator Icon">
+  </div>
+</div>
+
+<button class="btn" onclick="changeColor()">click me to change color!</button>
+
+<script>
+  var colors = ['red', 'blue', 'yellow'];
+  var colorIndex = 0; 
+
+  function changeColor() {
+    var button = document.querySelector('.btn');
+    button.style.backgroundColor = colors[colorIndex];
+    colorIndex = (colorIndex + 1) % colors.length;
+  }
+
+  var today = new Date();
+  var hour = today.getHours();
+  var greeting = "";
+
+  if (hour < 12) {
+    greeting = "Good morning!";
+  } else if (hour < 18) {
+    greeting = "Good afternoon!";
+  } else {
+    greeting = "Good evening!";
+  }
+
+  alert(greeting + "\nTime: " + today.toLocaleTimeString());
+</script>
+
+<div class="calculator">
+  <h2>Calculator</h2>
+  <input type="number" id="num1" placeholder="Enter first number">
+  <input type="number" id="num2" placeholder="Enter second number">
+  <button onclick="addNumbers()">Add</button>
+  <p id="result"></p>
+</div>
+
+<script>
+  function addNumbers() {
+    var num1 = parseFloat(document.getElementById('num1').value);
+    var num2 = parseFloat(document.getElementById('num2').value);
+    var result = num1 + num2;
+    document.getElementById('result').innerText = 'sum: ' + result;
+  }
+</script>
+
+</body>
+</html>
